@@ -28,7 +28,6 @@ export const removeUser = async ( req:http.IncomingMessage, res:http.ServerRespo
 
        res.writeHead( 204, { 'Content-type': 'application/json' } )
        return res.end( JSON.stringify( { message: `User ${id} removed` } ) )
-
      }
    }
  } catch (error) {

@@ -6,7 +6,7 @@ import { getUsers } from './users/get/getUsers';
 import { postUser } from './users/post/postUser';
 import { updateUser } from './users/put/updateUser';
 
-const server = http.createServer( ( req, res ) =>
+export const server = http.createServer( ( req, res ) =>
 {
   if ( req.url === '/api/users'&& req.method==='GET' )
   {
