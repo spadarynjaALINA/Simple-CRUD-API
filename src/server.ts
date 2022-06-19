@@ -12,16 +12,16 @@ const server = http.createServer( ( req, res ) =>
   {
    getUsers(req,res)
 
-  } else if(req.url?.match(/\/api\/users\/([0-9]+)/)&& req.method==='GET'){
+  } else if(req.url?.match(/\/api\/users\/([\w-]+$)/)&& req.method==='GET'){
     const id = req.url.split( '/' )[3]
     getUser(req, res, id)
   } else if ( req.url === '/api/users'&& req.method==='POST')
   {
     postUser( req, res )
-     } else if(req.url?.match(/\/api\/users\/([0-9]+)/)&& req.method==='PUT'){
+     } else if(req.url?.match(/\/api\/users\/([\w-]+$)/)&& req.method==='PUT'){
     const id = req.url.split( '/' )[3]
    updateUser(req, res, id)
-  } else if(req.url?.match(/\/api\/users\/([0-9]+)/)&& req.method==='DELETE'){
+  } else if(req.url?.match(/\/api\/users\/([\w-]+$)/)&& req.method==='DELETE'){
     const id = req.url.split( '/' )[3]
   removeUser(req, res, id)
   } else
