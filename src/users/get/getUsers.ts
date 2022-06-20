@@ -12,6 +12,13 @@ export const getUsers = async (req:http.IncomingMessage, res: http.ServerRespons
   res.end(JSON.stringify(users) )
 
   } catch(err) {
-    console.error(err)
+     console.log(err);
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Internal server error",
+      }),
+    );
   }
+
 }

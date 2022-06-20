@@ -31,6 +31,13 @@ export const removeUser = async ( req:http.IncomingMessage, res:http.ServerRespo
      }
    }
  } catch (error) {
-    console.error(error)
+    console.log(error);
+    res.writeHead(500, { "Content-type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Internal server error",
+      }),
+    );
+
   }
 }

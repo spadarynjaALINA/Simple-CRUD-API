@@ -45,6 +45,12 @@ export const updateUser = async ( req: http.IncomingMessage, res:ServerResponse,
        }
      }
 }} catch (error) {
-    console.error(error)
+  console.log(error);
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Internal server error",
+      }),
+    );
   }
 }

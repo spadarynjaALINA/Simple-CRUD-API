@@ -6,6 +6,9 @@ import { validate as uuidValidate } from 'uuid'
 import { version as uuidVersion } from 'uuid';
 export const getUser = async ( req:http.IncomingMessage, res: http.ServerResponse, id:string ) =>
 {
+  try {
+
+
 if(!(uuidValidate(id) && uuidVersion(id) === 4)){ res.writeHead(400,{'Content-type':'application/json'})
 
   res.end( JSON.stringify( { message: "id format not a UUID" } ) )
@@ -22,5 +25,13 @@ if(!(uuidValidate(id) && uuidVersion(id) === 4)){ res.writeHead(400,{'Content-ty
  res.writeHead(200,{'Content-type':'application/json'})
 
   res.end(JSON.stringify(user) )
-  }}
+  }} } catch (error) {
+console.log(error);
+    res.writeHead(500, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Internal server error",
+      }),
+    );
+  }
 }
