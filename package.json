@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-
-    "start:dev": "nodemon  --exec  \"ts-node  src/server.ts\" ",
     "lint": "eslint src",
-    "start:prod": "tsc && node dist/server.js"
+    "start:dev": "nodemon  --exec  \"ts-node  src/server.ts\" ",
+    "start:multi": "nodemon  --exec  \"ts-node  src/cluster.ts\" ",
+    "start:prod": "tsc && node dist/src/server.js"
   },
   "repository": {
     "type": "git",

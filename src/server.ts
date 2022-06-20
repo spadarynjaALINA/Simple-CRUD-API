@@ -1,10 +1,13 @@
 import http from 'http';
+import cluster from "cluster";
+import os from "os"
 import 'dotenv/config'
 import { removeUser } from './users/delete/removeUser';
 import { getUser } from './users/get/getUser';
 import { getUsers } from './users/get/getUsers';
 import { postUser } from './users/post/postUser';
 import { updateUser } from './users/put/updateUser';
+import { pid } from 'process';
 
 export const server = http.createServer( ( req, res ) =>
 {
@@ -34,4 +37,4 @@ export const server = http.createServer( ( req, res ) =>
 } );
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, ()=>console.log(`Server running on port ${PORT},`));
+server.listen(PORT, ()=>console.log(`Server running on port ${PORT}, Pid: ${pid}`));
